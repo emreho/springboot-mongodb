@@ -1,4 +1,4 @@
-package com.emrehoumi.springbootmongodb;
+package com.emrehoumi.springbootmongodb.bean;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
