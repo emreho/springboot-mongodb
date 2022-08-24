@@ -26,8 +26,8 @@ public class SpringbootMongodbApplication {
     @Bean
     CommandLineRunner runner(StudentRepository studentRepository, MongoTemplate mongoTemplate) {
         return args -> {
-            Address address = new Address("Morocco", "Marrakesh", "Ne4");
-            Student student = new Student("El Mehdi", "REHOUMI", "emrehoumi@gmail.com", Gender.FEMALE, address, List.of("React"), BigDecimal.TEN, LocalDateTime.now());
+            Address address = new Address("Country", "City", "Ne4");
+            Student student = new Student("El Mehdi", "REHO", "reho@gmail.com", Gender.FEMALE, address, List.of("MongoDB"), BigDecimal.TEN, LocalDateTime.now());
 
             // usingMongoTemplate(student, studentRepository, mongoTemplate);
 
@@ -40,7 +40,7 @@ public class SpringbootMongodbApplication {
 
     private static void usingMongoTemplate(Student student, StudentRepository studentRepository, MongoTemplate mongoTemplate) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("email").is("emrehoumi@gmail.com").and("firstName").is("El Mehdi"));
+        query.addCriteria(Criteria.where("email").is("reho@gmail.com").and("firstName").is("El Mehdi"));
         List<Student> students = mongoTemplate.find(query, Student.class);
         if (students.isEmpty()) studentRepository.insert(student);
         for (Student s : students) System.out.println(s.getFirstName() + " " + s.getLastName());
